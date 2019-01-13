@@ -12,13 +12,12 @@ getFilmsTitle = films => {
 };
 
 fetch(API_URL + "films")
-  .then(response => {
+  .then(async response => {
     if (!response.ok) {
       return Promise.reject(new Error("Unsuccessful response"));
     }
-    return response.json().then(films => {
-      output.innerText = getFilmsTitle(films);
-    });
+    const films = await response.json();
+    output.innerText = getFilmsTitle(films);
   })
   .catch(error => {
     console.warn(error);
