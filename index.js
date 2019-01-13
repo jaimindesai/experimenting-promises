@@ -5,7 +5,9 @@ getFilmsTitle = films => {
   return films
     .slice()
     .sort((a, b) => a.episode_id - b.episode_id)
-    .map(film => (film ? `${film.episode_id} . ${film.title}` : null))
+    .map(film =>
+      film.episode_id ? `${film.episode_id} . ${film.title}` : null
+    )
     .join("\n");
 };
 
